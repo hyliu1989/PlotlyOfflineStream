@@ -81,10 +81,12 @@ class JupyterNotebookPlotlyStream:
         ## Update
         IPython.display.display(IPython.display.HTML(plot_html))
         self._div_id = str(plotdivid)
+        self._already_plotted = True
 
     def update(self, n_parse_char=1024):
         assert self._fig is not None
         assert self._div_id is not None
+        assert self._already_plotted == True
 
         ## iplot alternative
         config = {'showLink':True, 'linkText':'Export to plot.ly'}
